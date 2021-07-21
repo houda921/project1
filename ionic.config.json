@@ -1,0 +1,7 @@
+{
+  "name": "OurTree",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

@@ -1,0 +1,49 @@
+<!-- <script type="module">
+  import { alertController } from 'https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/index.esm.js';
+  window.alertController = alertController;
+</script> -->
+  
+  <ion-content> 
+    <div fullscreen="true" class="background-container"> 
+      
+  <form class="all">  
+    <ion-card class="cardStyle">
+      <ion-item lines="full"> 
+        <ion-label position="floating">Email</ion-label> 
+        <ion-input type="text" #email required> </ion-input>
+          </ion-item> 
+          <ion-item lines="full"> 
+            <ion-label position="floating">mot de passe</ion-label> 
+            <ion-input type="password" #password required> </ion-input>
+              </ion-item> 
+          <ion-col> 
+            <ion-button color="success" type="submit" (click)='logIn(email,password)' expand="block"> 
+               logIn
+            </ion-button>
+          </ion-col>   
+          <ion-col>  
+            <b><p style="color: black;">Si vous n'avez pas un compte  <a  (click)="ImagePage()">inscrivez vous !</a></p></b>
+            
+          </ion-col>  
+          
+        </ion-card>
+        </form>  
+        <!-- <script>
+          const button = document.querySelector('ion-button');
+          button.addEventListener('click', handleButtonClick);
+      
+          async function handleButtonClick() {
+            const alert = await alertController.create({
+              header: 'Use this lightsaber?',
+              message: 'Do you agree to use this lightsaber to do good across the galaxy?',
+              buttons: ['Disagree', 'Agree']
+            });
+      
+            await alert.present();
+          }
+        </script> -->
+      
+     
+  
+</div>
+</ion-content>

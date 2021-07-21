@@ -1,0 +1,35 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      my map
+      <ion-buttons (click)="addMarker()">
+        <ion-icon slot="end" name="add-circle-outline"></ion-icon>
+      </ion-buttons>
+      <!-- <ion-fab-buttons color="success" (click)="dismiss()">
+    <ion-icon slot="icon-only" name="close"></ion-icon>
+  </ion-fab-buttons>  -->
+    </ion-title>
+  </ion-toolbar>
+</ion-header> 
+
+<ion-content [fullscreen]="true"> 
+  <!-- <form [formGroup]="directionForm" (ngSubmit)="calculateAndDisplayRoute(directionForm.value)">  -->
+    <!-- <ion-item>
+      <ion-label position="floating">Source</ion-label>
+      <ion-input formControlName="source"></ion-input>
+    </ion-item> -->
+    <!-- <ion-item>
+      <ion-label position="floating">Destination</ion-label>
+      <ion-input formControlName="destination"></ion-input>
+    </ion-item>
+    <ion-button expand="full" type="submit" [disabled]="!directionForm.valid">Get Direction</ion-button>
+  </form> -->
+  
+  <div #map id="map" ></div>   
+  
+  <!-- <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+  <ion-fab-button color="success" (click)="selectLocation()">
+    <ion-icon slot="add" name="navigate-outline"></ion-icon>
+  </ion-fab-button> 
+</ion-fab> -->
+</ion-content>
