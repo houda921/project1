@@ -65,7 +65,7 @@ LoginUser(value){
        userProfile.get().subscribe( result=>{
 
         if(result.exists){
-          this.nav.navigateForward(['tabs']);
+          this.nav.navigateForward(['home']);
         }else{
 
           this.firestore.doc(`profile/${this.authservice.getUID()}`).set({

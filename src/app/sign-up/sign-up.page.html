@@ -15,11 +15,11 @@
 
         <ion-card-header>
             <ion-card-title>
-              Sign Up
+              S'inscrire
             </ion-card-title>
             <ion-card-subtitle>
-              Create Your account by filling
-up the form
+              Créez votre compte en remplissant
+le formulaire
               </ion-card-subtitle>
         </ion-card-header>
              <form [formGroup]="ValidationFormUSer" (ngSubmit)="registerUser(ValidationFormUSer.value)">
@@ -77,26 +77,45 @@ up the form
                  {{validation.message}}
              </div>
 
-            </ng-container>
+            </ng-container> 
+            <!-- <ng-container>
+              <ion-item> 
+                <div class="containerWrap"  >
+
+                  <ion-button expand="full" *ngIf="!isLoading  && !isLoaded" class="ion-text-center"  >
+                    <ion-icon slot="start" lazy="true" name="image"></ion-icon>
+                    <input type="file" (change)="uploadImagetoFirebase($event)" id="file-input"  accept="image/png, image/jpg" formControlName="image">
+                  </ion-button>
+               
+                    <ion-card *ngIf="isLoading && !isLoaded">
+                     <ion-card-content *ngIf="percentage | async as percent" class="ion-text-center">
+                      Progress: {{percent |  number}}%
+                      <ion-progress-bar value="{{percent / 100}}"></ion-progress-bar>
+                          <button class="btn" (click)="goToNextPage()" >Continue</button>  
+                     </ion-card-content>
+                   </ion-card> 
+                 </div>
+              </ion-item>
+          </ng-container> -->
 
            <div class="sign-btn-wrap">
-              <ion-button  shape="round" type="submit"  fill="solid" class="sign-btn" [disabled]="!ValidationFormUSer.valid">Sign Up</ion-button>
+              <ion-button  shape="round" type="submit"  fill="solid" class="sign-btn" [disabled]="!ValidationFormUSer.valid">S'inscrire</ion-button>
              </div>
 
              <div class="text-tag">
-             <span>Sign Up with</span>
+             <span>S'inscrire avec</span>
              </div>
 
              <div class="social-btns">
                  <ion-button fill="clear"  class="facebookbtn ion-no-padding">
-               <ion-img src="assets/images/facebook.png"></ion-img>
+               <!-- <ion-img src="assets/images/facebook.png"></ion-img> --><ion-icon name="logo-facebook"></ion-icon>
                  </ion-button>
-                 <ion-button fill="clear"  class="googlebtn ion-no-padding">
+                 <!-- <ion-button fill="clear"  class="googlebtn ion-no-padding">
                <ion-img src="assets/images/google.png"></ion-img>
                  </ion-button>
                  <ion-button fill="clear"  class="applebtn ion-no-padding">
                <ion-img src="assets/images/apple.png"></ion-img>
-                 </ion-button>
+                 </ion-button> -->
 
                </div>
 

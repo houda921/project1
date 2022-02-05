@@ -9,7 +9,7 @@
 
 <ion-content>
     <ion-card class="ion-no-margin">
-      <ion-img src="assets/images/header1.png"></ion-img>
+      <!-- <ion-img src="assets/images/header1.png"></ion-img> -->
       <ion-card-content>
 
     <form [formGroup]="validationFormUser" (ngSubmit)="LoginUser(validationFormUser.value)">
@@ -44,30 +44,13 @@
 
         </div>
          <div class="password_forgot">
-            <ion-button fill="clear" class="ion-no-padding">ForgotPasword?</ion-button>
+            <ion-button fill="clear" class="ion-no-padding">mot de passe oublier?</ion-button>
          </div>
          <div class="sign-btn-wrap">
-            <ion-button  shape="round" type="submit"  fill="solid" class="sign-btn" [disabled]="!validationFormUser.valid" >Login</ion-button>
+            <ion-button  shape="round" type="submit"  fill="solid" class="sign-btn" [disabled]="!validationFormUser.valid" >S'inscrire</ion-button>
            </div>
 
-           <div class="text-tag">
-           <span>Or via Social Media</span>
-           </div>
-
-           <div class="social-btns">
-               <ion-button fill="clear"  class="facebookbtn ion-no-padding">
-             <ion-img src="assets/images/facebook.png"></ion-img>
-               </ion-button>
-               <ion-button fill="clear"  class="googlebtn ion-no-padding">
-             <ion-img src="assets/images/google.png"></ion-img>
-               </ion-button>
-               <ion-button fill="clear"  class="applebtn ion-no-padding">
-             <ion-img src="assets/images/apple.png"></ion-img>
-               </ion-button>
-
-             </div>
-
-
+           
 
       </form>
       </ion-card-content>
@@ -77,7 +60,7 @@
 
 
     <div class="ion-card-footer">
-     <span>Don’t have an account?</span><button class="ion-no-padding" >Sign Up</button>
+     <span>pas de compte?</span><button class="ion-no-padding" >S'inscrire</button>
       </div>
 
 

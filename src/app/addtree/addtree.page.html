@@ -1,0 +1,225 @@
+<!-- <ion-card class="ion-margin" class="ion-text-center" > <ion-icon name="leaf-outline"  color="success"></ion-icon>
+  agissons pour un environnement propre <ion-icon name="leaf-outline" color="success" ></ion-icon>
+</ion-card> 
+
+<ion-content class="bg-color" class="ion-text-center">
+
+    <ion-card >
+
+        <ion-avatar></ion-avatar>
+             <form [formGroup]="ValidationFormUSer" (ngSubmit)="registerUser(ValidationFormUSer.value)">
+       <ion-card-content>
+           <ion-item text="center">
+               <ion-input name="name" type="text" placeholder="location" formControlName="name">
+                 <ion-icon name="location-outline"  ></ion-icon>
+               </ion-input>
+           </ion-item> 
+              <div>
+                <ng-container *ngFor="let validation of validationMessages.name">
+
+                  <div class="error_message" *ngIf="ValidationFormUSer.get('name').hasError(validation.type) && (ValidationFormUSer.get('name').dirty || ValidationFormUSer.get('name').touched)">
+                      {{validation.message}}
+                  </div>
+
+                 </ng-container>
+
+              </div>
+           <ion-item>
+               <ion-input name="treename" type="text" placeholder="le nom de l'arbre" formControlName="treename">
+                 <ion-icon name="leaf-outline" ></ion-icon>
+               </ion-input>
+           </ion-item>
+           <div>
+             <ng-container *ngFor="let validation of validationMessages.phone">
+
+               <div class="error_message" *ngIf="ValidationFormUSer.get('treename').hasError(validation.type) && (ValidationFormUSer.get('treename').dirty || ValidationFormUSer.get('treename').touched)">
+                   {{validation.message}}
+               </div>
+
+              </ng-container>
+
+           </div>
+           <ion-item>
+               <ion-input name="treeNbr" type="number" placeholder="le nombre des arbres" formControlName="treeNbr">
+                <ion-icon name="grid-outline"></ion-icon>
+               </ion-input>
+           </ion-item>
+           <ng-container *ngFor="let validation of validationMessages.treeNbr">
+
+             <div class="error_message" *ngIf="ValidationFormUSer.get('treeNbr').hasError(validation.type) && (ValidationFormUSer.get('treeNbr').dirty || ValidationFormUSer.get('treeNbr').touched)">
+                 {{validation.message}}
+             </div> 
+             </ng-container>
+
+           
+           <ng-container>
+            <ion-item> 
+              <div class="containerWrap"  >
+
+                 <ion-button expand="" *ngIf="!isLoading  && !isLoaded" class="ion-text-center" color="success" > 
+                  <ion-icon slot="start" lazy="true" name="image"></ion-icon>
+                  <input type="file" (change)="uploadImagetoFirebase($event)"  accept="image/png, image/jpg" formControlName="image">
+                </ion-button> 
+             
+                  <ion-card *ngIf="isLoading && !isLoaded">
+                   <ion-card-content *ngIf="percentage | async as percent" class="ion-text-center">
+                    Progress: {{percent |  number}}%
+                    <ion-progress-bar value="{{percent / 100}}"></ion-progress-bar>
+                        <button class="btn" (click)="goToNextPage()" >Continue</button>  -->
+                   <!-- </ion-card-content>
+                 </ion-card> 
+               </div>
+            </ion-item>
+        </ng-container> 
+      
+
+       </ion-card-content>
+        </form>
+    </ion-card>
+
+</ion-content> --> 
+<ion-header-content class="headerClass">
+   <div class="big-circle top-circle-big" >
+    <div class="medium-circle inner-circle-medium" ></div>
+    <div class="small-circle inner-circle-small"></div>
+    <div class="todo-text"><h3> </h3> </div>
+  </div> 
+</ion-header-content> <br> <br> <br> 
+<ion-content> 
+  <ion-card>   
+  
+  <div class="list-header">List</div> 
+  
+ 
+  
+
+  
+
+  <ion-list #slidingList>
+    <ion-item-sliding *ngFor="let message of Markers; trackBy: trackByFn">
+      <ion-item (click)="toggleCheck(message)">
+        <p [class.checked]="message.checked">{{message.name}} </p>
+      </ion-item>
+      <ion-item-options>
+        <button ion-button color="danger" (click)="deleteMarker(message.id)">
+          <ion-icon name="trash-outline"></ion-icon>delete task 
+        </button>
+        <button ion-button color="success" (click)="updateMarker(message)">
+          <ion-icon name="create-outline"></ion-icon>update task
+        </button>
+      </ion-item-options> 
+    </ion-item-sliding>
+  </ion-list> 
+  <ion-fab>
+    <ion-fab-button (click)="addItem()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <ion-infinite-scroll [ngClass]="showForm? 'form-open': 'form-closed'" class="form" positon="floating"> 
+    <ion-infinite-scroll-content>
+    <ion-list>
+      <ion-item class="no-border">
+        <div class="new-task">
+          <span>Ajoutez un arbre</span>
+        </div>
+        <ion-icon class="close" name="arrow-down-outline" slot="end" (click)="showForm=false"></ion-icon>
+      </ion-item> 
+      <ion-item> 
+        <ion-button (click)=" choosePOsition()" color="success">
+          Obtenir la position de l'appareil
+        </ion-button> 
+      </ion-item>
+      <ion-item> 
+        <ion-label position="floating" > <b>ajouter l'adresse</b>  </ion-label>
+        
+          <ion-input [(ngModel)]="model.name" ></ion-input>
+        </ion-item> <br>     
+        <ion-item>
+        <ion-label position="floating" > <b> latitude est </b>  </ion-label>
+          <ion-input [(ngModel)]="model.latitude" ></ion-input>
+        </ion-item> <br> 
+        <ion-item>  
+        <ion-label position="floating" > <b> longitude est </b>  </ion-label>
+        
+          <ion-input [(ngModel)]="model.longitude" ></ion-input>
+        </ion-item>  
+        <ion-item>  
+          <ion-label position="floating" > <b> le nombre des arbres  </b>  </ion-label>
+          
+            <ion-input [(ngModel)]="model.treeNbr" ></ion-input>
+          </ion-item>  
+          <ion-item>  
+            <ion-label position="floating" > <b> le nom des arbres  </b>  </ion-label>
+            
+              <ion-input [(ngModel)]="model.treename" ></ion-input>
+            </ion-item>  
+            <ion-item> 
+              <ion-label position="floating"> 
+                 Date
+              </ion-label> 
+              <ion-datetime required [(ngModel)]="duedate" name="duedate" displayformat="D MMM YYYY HH:mm" pickerFormat="D MMM YYYY HH:mm"></ion-datetime>
+            </ion-item> 
+        <!-- <ion-item> 
+          <ion-icon name="create-outline"></ion-icon>
+        <ion-label position="floating">
+         <b>donner le nom de l'arbre </b> 
+        </ion-label>   
+        
+           <ion-input [(ngModel)]=" model.treename " ></ion-input>
+        </ion-item><br>  
+        <ion-item>
+          <ion-icon name="add-circle-outline"></ion-icon>
+        <ion-label position="floating">
+         <b> donner le nombre d'arbre</b>
+        </ion-label> 
+        
+          <ion-input [(ngModel)]="model.treeNbr" ></ion-input>
+        </ion-item><br>
+         -->
+      
+      
+        <ion-button (click)="addMarker()" size="large" expand="block">Save</ion-button>
+    </ion-list> 
+  </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-card>
+</ion-content> 
+<ion-footer style="padding-top: 10%;  --background: rgba(255,255,255,0.8);">
+   
+  <div class="popup-menu">
+    <div class="popup-menu-toggle" [ngClass]="{'out': openMenu}" (click)="togglePopupMenu()">
+      <ion-icon color="dark" name="grid-outline"></ion-icon>
+    </div>
+    <div class="popup-menu-overlay" [ngClass]="{'in': openMenu}" (click)="togglePopupMenu()"></div>
+
+    <div class="popup-menu-panel" [ngClass]="{'in': openMenu}">
+      <ion-grid class="ion-no-padding">
+        <ion-row align-items-center>
+          
+          <ion-col size="4" class="ion-no-padding">
+            <ion-tab-button [routerLink]="['/map']">
+              <ion-icon color="dark" name="map-outline"></ion-icon>
+              <ion-label color="dark">Map</ion-label>
+            </ion-tab-button>
+          </ion-col>
+          <ion-col size="4" class="ion-no-padding">
+            <ion-tab-button [routerLink]="['/home']">
+              <ion-icon color="dark" name="home-outline"></ion-icon>
+              <ion-label color="dark">Home</ion-label>
+            </ion-tab-button>
+          </ion-col>
+        
+        <ion-col size="4" class="ion-no-padding">
+          <ion-tab-button [routerLink]="['/profile']">
+            <ion-icon color="dark" name="person"></ion-icon>
+            <ion-label color="dark">Profile</ion-label>
+          </ion-tab-button>
+        </ion-col>
+      </ion-row> 
+        
+      </ion-grid>
+    </div>
+  </div>
+
+
+</ion-footer>

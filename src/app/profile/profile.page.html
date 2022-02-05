@@ -20,24 +20,44 @@
       <ion-card-title>
         {{profileName}}
       </ion-card-title>
-      <ion-card-subtitle>
-        Location
-      </ion-card-subtitle>
     </ion-card-header>
-
     <ion-card-content>
       <ion-item lines="none">
         <ion-icon name="mail"></ion-icon>
         <ion-label>{{this.profileEmail}}</ion-label>
       </ion-item>
-        <ion-item lines="none">
-          <ion-icon name="call"></ion-icon>
-          <ion-label>Phone No.</ion-label>
-        </ion-item>
-          <ion-item lines="none">
-            <ion-icon name="locate"></ion-icon>
-            <ion-label>Loation</ion-label>
-          </ion-item>
     </ion-card-content>
   </ion-card>
 </ion-content>
+<ion-footer style="padding-top: 10%; --background: rgba(255,255,255,0.8);">
+  <div class="popup-menu">
+    <div class="popup-menu-toggle" [ngClass]="{'out': openMenu}" (click)="togglePopupMenu()">
+      <ion-icon color="dark" name="grid-outline"></ion-icon>
+    </div>
+    <div class="popup-menu-overlay" [ngClass]="{'in': openMenu}" (click)="togglePopupMenu()"></div>
+
+    <div class="popup-menu-panel" [ngClass]="{'in': openMenu}">
+      <ion-grid class="ion-no-padding">
+        
+        <ion-row align-items-center> 
+          <ion-col size="6" class="ion-no-padding">
+            <ion-tab-button [routerLink]="['/home']">
+              <ion-icon color="dark" name="home-outline"></ion-icon>
+              <ion-label color="dark">Home</ion-label>
+            </ion-tab-button>
+          </ion-col>
+          
+          <ion-col size="6" class="ion-no-padding">
+            <ion-tab-button [routerLink]="['/map']">
+              <ion-icon color="dark" name="person"></ion-icon>
+              <ion-label color="dark">Map</ion-label>
+            </ion-tab-button>
+          </ion-col>
+          
+        </ion-row>
+      </ion-grid>
+    </div>
+  </div>
+
+
+</ion-footer>

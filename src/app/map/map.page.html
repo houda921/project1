@@ -1,35 +1,72 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      my map
-      <ion-buttons (click)="addMarker()">
-        <ion-icon slot="end" name="add-circle-outline"></ion-icon>
-      </ion-buttons>
-      <!-- <ion-fab-buttons color="success" (click)="dismiss()">
-    <ion-icon slot="icon-only" name="close"></ion-icon>
-  </ion-fab-buttons>  -->
-    </ion-title>
-  </ion-toolbar>
-</ion-header> 
 
-<ion-content [fullscreen]="true"> 
-  <!-- <form [formGroup]="directionForm" (ngSubmit)="calculateAndDisplayRoute(directionForm.value)">  -->
-    <!-- <ion-item>
-      <ion-label position="floating">Source</ion-label>
-      <ion-input formControlName="source"></ion-input>
-    </ion-item> -->
-    <!-- <ion-item>
-      <ion-label position="floating">Destination</ion-label>
-      <ion-input formControlName="destination"></ion-input>
-    </ion-item>
-    <ion-button expand="full" type="submit" [disabled]="!directionForm.valid">Get Direction</ion-button>
-  </form> -->
+<ion-header> 
+  <ion-button  color="success" expand="full" slot="" (click)="addMarker()"> <ion-icon name ="leaf-outline"></ion-icon> <h6>take an action</h6> </ion-button>
+    
   
-  <div #map id="map" ></div>   
+ 
+</ion-header>
+
+<ion-content [fullscreen]="true">   
   
-  <!-- <ion-fab vertical="bottom" horizontal="center" slot="fixed">
-  <ion-fab-button color="success" (click)="selectLocation()">
-    <ion-icon slot="add" name="navigate-outline"></ion-icon>
-  </ion-fab-button> 
-</ion-fab> -->
+  <div id="map" style="width: 100%; height: 80%; border-radius: 0px 0px 20px 20px"></div> 
+   
+  <!-- <ion-searchbar style="--border-radius: 10px;" showCancelButton="focus" cancelButtonText="Custom Cancel" ></ion-searchbar> -->
+ 
+  <div style="margin-top: 40px;" class="live-event" *ngFor="let item of propertyList">
+    <img style="width: 40%;height:80%;" src={{item.image}}/>
+
+    <div class="info">
+      <div class="contentId">
+        <h6>{{item.name}}</h6>
+
+        <p class="stats">
+          <span><ion-icon name="eye"></ion-icon>&nbsp;2.3K</span><span><ion-icon name="heart"></ion-icon>&nbsp;3758</span>
+        </p>
+
+        <p class="location"><ion-icon name='location'></ion-icon>{{item.city}}</p>
+
+        <ion-icon color="warning" name="star-outline"></ion-icon>
+        <ion-icon color="warning" name="star-outline"></ion-icon>
+        <ion-icon color="warning" name="star-outline"></ion-icon>
+        <ion-icon color="warning" name="star-outline"></ion-icon>
+        <ion-icon color="warning" name="star-outline"></ion-icon>
+
+      </div>
+
+      
+    </div>
+  </div>
 </ion-content>
+<ion-footer style="padding-top: 10%; --background: rgba(255,255,255,0.8);">
+  <div class="popup-menu">
+    <div class="popup-menu-toggle" [ngClass]="{'out': openMenu}" (click)="togglePopupMenu()">
+      <ion-icon color="dark" name="grid-outline"></ion-icon>
+    </div>
+    <div class="popup-menu-overlay" [ngClass]="{'in': openMenu}" (click)="togglePopupMenu()"></div>
+
+    <div class="popup-menu-panel" [ngClass]="{'in': openMenu}">
+      <ion-grid class="ion-no-padding">
+        
+        <ion-row align-items-center> 
+          <ion-col size="6" class="ion-no-padding">
+            <ion-tab-button [routerLink]="['/home']">
+              <ion-icon color="dark" name="home-outline"></ion-icon>
+              <ion-label color="dark">Home</ion-label>
+            </ion-tab-button>
+          </ion-col>
+          
+          <ion-col size="6" class="ion-no-padding">
+            <ion-tab-button [routerLink]="['/profile']">
+              <ion-icon color="dark" name="person"></ion-icon>
+              <ion-label color="dark">Profile</ion-label>
+            </ion-tab-button>
+          </ion-col>
+         
+          
+        </ion-row>
+      </ion-grid>
+    </div>
+  </div>
+
+
+</ion-footer>

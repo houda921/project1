@@ -9,6 +9,7 @@ import { MapPageRoutingModule } from './map-routing.module';
 import { MapPage } from './map.page';
 import {NativeGeocoder} from '@ionic-native/native-geocoder/ngx';
 
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 @NgModule({
   imports: [
@@ -16,10 +17,13 @@ import {NativeGeocoder} from '@ionic-native/native-geocoder/ngx';
     FormsModule,
     IonicModule,
     MapPageRoutingModule, 
-    ReactiveFormsModule
+    ReactiveFormsModule, 
+    HttpClientModule,
+    
+    
   ], 
   //declarations:[]
-   declarations: [MapPage] ,
-   providers:[NativeGeocoder]
+   declarations: [MapPage ] ,
+   providers:[NativeGeocoder ,HttpClientModule]
 })
 export class MapPageModule {}

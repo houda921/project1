@@ -1,17 +1,15 @@
-import { NgModule } from '@angular/core';
+import { NgModule } from '@angular/core'; 
+import {AuthGuard} from 'src/app/guards.guard'
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import {Facebook, FacebookLoginResponse} from '@ionic-native/facebook/ngx';
 const routes: Routes = [
   
   {
     path: '',
-    redirectTo: 'login1',
+    redirectTo:'login1',
     pathMatch: 'full'
   },
-  {
-    path: 'login',
-    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
-  },
+  
   {
     path: 'registration',
     loadChildren: () => import('./registration/registration.module').then( m => m.RegistrationPageModule)
@@ -20,14 +18,7 @@ const routes: Routes = [
     path: 'map',
     loadChildren: () => import('./map/map.module').then( m => m.MapPageModule)
   },
-  {
-    path: 'choices',
-    loadChildren: () => import('./choices/choices.module').then( m => m.ChoicesPageModule)
-  },
-  {
-    path: 'upload-image',
-    loadChildren: () => import('./upload-image/upload-image.module').then( m => m.UploadImagePageModule)
-  },
+  
   {
     path: 'profile',
     loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
@@ -44,20 +35,47 @@ const routes: Routes = [
     path: 'loginscreen',
     loadChildren: () => import('./loginscreen/loginscreen.module').then( m => m.LoginscreenPageModule)
   },
+ 
+    
   {
-    path: 'feeds',
-    loadChildren: () => import('./feeds/feeds.module').then( m => m.FeedsPageModule)
+    path: 'uploadimage',
+    loadChildren: () => import('./uploadimage/uploadimage.module').then( m => m.UploadimagePageModule)
+  },
+ 
+  
+  
+  {
+    path: 'home',
+    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+  },
+  
+  {
+    path: 'addtree',
+    loadChildren: () => import('./addtree/addtree.module').then( m => m.AddtreePageModule)
   },
   {
-    path: 'tabs',
-    loadChildren: () => import('./tabs/tabs.module').then( m => m.TabsPageModule)
-  }, 
+    path: 'map1',
+    loadChildren: () => import('./map1/map1.module').then( m => m.Map1PageModule)
+  },
+  
+  {
+    path: 'treeprofile',
+    loadChildren: () => import('./treeprofile/treeprofile.module').then( m => m.TreeprofilePageModule)
+  },
+ 
+ 
+  // {
+  //   path: 'list',
+  //   loadChildren: () => import('./list/list.module').then( m => m.ListPageModule)
+  // },
+  
   
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }) , 
+    
   ],
   exports: [RouterModule]
 })

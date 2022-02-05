@@ -1,49 +1,29 @@
-<ion-header  class="ion-no-border">
-  <ion-toolbar>
-    <!-- <ion-title>login</ion-title> -->
-  </ion-toolbar>
-</ion-header>
+
 
 <ion-content>
-
-<ion-card class="ion-no-margin">
+<div class="background-container ion-no-padding ion-no-margin" fullscreen="true">
+<ion-card >
   <!-- <ion-img src="assets/images/header.png"></ion-img> -->
   <ion-card-header>
   <ion-card-title>
-     Welcome
+    <b>Bienvenu</b> 
   </ion-card-title>
   <ion-card-subtitle class="ion-text-lowercase">
-    This app is a social media platform for
-    artists — and it’s all about visuals
+    
   </ion-card-subtitle>
 
   </ion-card-header>
 
   <ion-card-content>
     <div class="signin-btns">
-        <ion-button  size="small" fill="solid" shape="round" class="loginbtn" (click)="gotoLogin1page()">
-         Login
+        <ion-button  size="small" fill="solid" shape="round" class="loginbtn" (click)="gotoLogin1page()" color="success">
+         s'identifier
         </ion-button>
-        <ion-button  size="small" fill="outline" shape="round" color="light" (click)="registerUser()" >Sign Up</ion-button>
+        <ion-button  size="small" fill="outline" shape="round" color="light" (click)="registerUser()" >s'inscrire</ion-button>
       </div>
-      <div class="text-tag">
-      <span>Or via Social Media</span>
-      </div>
-
-      <!-- <div class="social-btns">
-          <ion-button fill="clear"  class="facebookbtn ion-no-padding" (click)="loginwithFacebook()">
-        <ion-img src="assets/images/facebook.png"></ion-img>
-          </ion-button>
-          <ion-button fill="clear"  class="googlebtn ion-no-padding" (click)="googlePlusLogin()">
-        <ion-img src="assets/images/google.png"></ion-img>
-          </ion-button>
-          <ion-button fill="clear"  class="applebtn ion-no-padding">
-        <ion-img src="assets/images/apple.png"></ion-img>
-          </ion-button>
-
-        </div> -->
+     
   </ion-card-content>
 
 </ion-card>
-
+</div>
 </ion-content>

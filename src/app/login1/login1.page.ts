@@ -17,7 +17,8 @@ export class Login1Page implements OnInit {
   constructor(private nav: NavController, private fbook: Facebook, private googleService : AuthService ,public nfFireAuth:AngularFireAuth,public router :Router ) {
   }
 
-  ngOnInit() {
+  ngOnInit() { 
+    
   }
 
   gotoLogin1page(){
@@ -63,8 +64,8 @@ export class Login1Page implements OnInit {
       });
 
      }
-   }, errro=>{
-     console.log("FIRE:ERROR", errro)
+   }, error=>{
+     console.log("FIRE:ERROR", error)
    })
   }
 

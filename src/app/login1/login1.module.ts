@@ -11,6 +11,7 @@ import { GooglePlus } from '@ionic-native/google-plus/ngx';
 import {FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms' ; 
 import { LottieSplashScreen } from '@ionic-native/lottie-splash-screen/ngx'; 
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { Facebook } from '@ionic-native/facebook/ngx';
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
     FormsModule,
     IonicModule,
     Login1PageRoutingModule , 
-    ReactiveFormsModule ,
+    ReactiveFormsModule , 
+    
   ],
   declarations: [Login1Page] , 
   providers:[LottieSplashScreen,StatusBar ,GooglePlus ,ReactiveFormsModule]

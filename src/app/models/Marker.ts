@@ -1,7 +1,8 @@
-interface Marker { 
-    position:{ 
-        lat:number , 
-        lng:number,
-    } ; 
-    title:string;
+interface Marker {  
+    markerID:string;
+     latitude:number , 
+     longitude:number,
+    treeUrl:string;
+    treename:string; 
+    treeNbr:number;
 }

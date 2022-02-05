@@ -1,0 +1,166 @@
+<ion-header [translucent]="true">
+ 
+  <ion-toolbar color="themeSuccess">
+    <ion-segment class="segment-wrapper" (ionChange)="segmentChanged($event)" [(ngModel)]="segment">
+      <ion-segment-button value="0">
+        <ion-label>choisir l'adresse</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="1">
+        <ion-label>Details</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="2">
+        <ion-label>Listes </ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-slides class="slides-wrapper" #slides (ionSlideDidChange)="slideChanged()" >
+    <ion-slide >
+      <ion-searchbar placeholder="Search Here" (ionInput)="search()" [(ngModel)]="searchKey"></ion-searchbar>
+     
+      <ion-button (click)="moveTodetails()" color="success"> enregistrer la position</ion-button>  
+      <div id="map" ></div>  
+      
+    </ion-slide> 
+    <ion-slide>
+      <ion-card>   
+  
+          <ion-list>
+            <ion-item class="no-border">
+              <div class="new-task">
+                <span>Ajoutez un arbre</span>
+              </div>
+              <ion-icon class="close" name="arrow-down-outline" slot="end" (click)="showForm=false"></ion-icon>
+            </ion-item> 
+            <ion-item> 
+            </ion-item>
+            <ion-item> 
+              <ion-label position="floating" > <b> l'adresse est </b>  </ion-label>
+              
+                <ion-input [(ngModel)]="model.name" ></ion-input>
+              </ion-item> <br>     
+              <ion-item>
+              <ion-label position="floating" > <b> latitude est </b>  </ion-label>
+                <ion-input [(ngModel)]="model.latitude" ></ion-input>
+              </ion-item> <br> 
+              <ion-item>  
+              <ion-label position="floating" > <b> longitude est </b>  </ion-label>
+              
+                <ion-input [(ngModel)]="model.longitude" ></ion-input>
+              </ion-item>  
+              <ion-item>  
+                <ion-label position="floating" > <b> le nombre des arbres  </b>  </ion-label>
+                
+                  <ion-input [(ngModel)]="model.treeNbr" ></ion-input>
+                </ion-item>  
+                <ion-item>  
+                  <ion-label position="floating" > <b> le nom des arbres  </b>  </ion-label>
+                  
+                    <ion-input [(ngModel)]="model.treename" ></ion-input>
+                  </ion-item>   
+                  <!-- <ion-item>  
+                    <ion-label position="floating" > <b> l'url de l'image </b>  </ion-label>
+                    
+                      <ion-input [(ngModel)]="model.treeUrl" ></ion-input>
+                    </ion-item>  
+                  <ion-item> 
+                    <ion-label position="floating"> 
+                      Due Date
+                    </ion-label> 
+                    <ion-datetime required [(ngModel)]="duedate" name="duedate" displayformat="D MMM YYYY HH:mm" pickerFormat="D MMM YYYY HH:mm"></ion-datetime>
+                  </ion-item> -->
+
+                  <ion-button (click)="addPhoto('library')" color="tertiary" expand="block">
+                    <ion-icon name="image" slot="start"></ion-icon>
+                    Ouvrir la bibliothèque
+                  </ion-button>
+                  
+                  <ion-button (click)="addPhoto('camera')" color="secondary" expand="block">
+                    <ion-icon name="camera" slot="start"></ion-icon>
+                    Prendre une photo
+                  </ion-button>  
+                  <div class="flex">
+                    <div class="img-box">
+                      <img [src]="image">
+                    </div>
+                  </div>
+                  <ion-button (click)="uploadFirebase()" color="warning"  expand="block">
+                    <ion-icon name="cloud-upload" slot="start"></ion-icon>
+                    Envoyer la photo
+                  </ion-button> 
+                  <!-- <div class="containerWrap"> 
+                    <br> <br>
+                      <ion-button expand="full" *ngIf="!isLoading  && !isLoaded" class="ion-text-center">
+                        <ion-icon slot="start" lazy="true" name="image"></ion-icon>
+                        <input type="file" (change)="uploadImagetoFirebase($event)" id="file-input"  accept="image/png, image/jpg">
+                      </ion-button>
+                   
+                       <ion-card *ngIf="isLoading && !isLoaded">
+                         <ion-card-content *ngIf="percentage | async as percent" class="ion-text-center">
+                          Progress: {{percent |  number}}%
+                          <ion-progress-bar value="{{percent / 100}}"></ion-progress-bar>
+                            <button class="btn" (click)="goToNextPage()" >Continue</button>
+                         </ion-card-content>
+                       </ion-card>
+                     </div> -->
+                  <ion-button (click)="addMarker()" size="large" expand="block">Save</ion-button>
+                  
+          </ion-list> 
+        <!-- </ion-infinite-scroll-content>
+        </ion-infinite-scroll>  -->
+        
+      </ion-card> 
+      
+      </ion-slide>
+    <ion-slide>
+      <ion-card>   
+  
+        <div class="list-header">List</div> 
+        <ion-list #slidingList>
+          <ion-item-sliding *ngFor="let message of Markers; trackBy: trackByFn">
+            <ion-item (click)="toggleCheck(message)">
+              <p [class.checked]="message.checked">{{message.name}} </p>
+            </ion-item>
+          </ion-item-sliding>
+        </ion-list>  
+        </ion-card>
+      
+    </ion-slide>
+  </ion-slides>
+  
+</ion-content> 
+<ion-footer style="padding-top: 10%; --background: rgba(255,255,255,0.8);">
+  <div class="popup-menu">
+    <div class="popup-menu-toggle" [ngClass]="{'out': openMenu}" (click)="togglePopupMenu()">
+      <ion-icon color="dark" name="grid-outline"></ion-icon>
+    </div>
+    <div class="popup-menu-overlay" [ngClass]="{'in': openMenu}" (click)="togglePopupMenu()"></div>
+
+    <div class="popup-menu-panel" [ngClass]="{'in': openMenu}">
+      <ion-grid class="ion-no-padding">
+        
+        <ion-row align-items-center> 
+          <ion-col size="6" class="ion-no-padding">
+            <ion-tab-button [routerLink]="['/home']">
+              <ion-icon color="dark" name="home-outline"></ion-icon>
+              <ion-label color="dark">Home</ion-label>
+            </ion-tab-button>
+          </ion-col>
+          
+          <ion-col size="6" class="ion-no-padding">
+            <ion-tab-button [routerLink]="['/profile']">
+              <ion-icon color="dark" name="person"></ion-icon>
+              <ion-label color="dark">Profile</ion-label>
+            </ion-tab-button>
+          </ion-col>
+          
+          
+        </ion-row>
+      </ion-grid>
+    </div>
+  </div>
+
+
+</ion-footer>

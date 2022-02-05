@@ -8,15 +8,17 @@ import {AngularFireAuth} from '@angular/fire/auth'
 export  interface UserPro{
   username: string;
   uid: string;
-}
-
+}  
+export  interface Marker{ 
+  mid:string;
+} 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
   private user : UserPro;
-
+private marker :Marker ;
   constructor(public auth: AngularFireAuth, public nfFireAuth:AngularFireAuth,private googlePlus: GooglePlus ) { }
 
 
@@ -37,8 +39,10 @@ export class AuthService {
   getUID(): string{
     return this.user.uid;
   }
-
-
+ 
+getMID():string { 
+  return this.marker.mid;
+}
 
   userRegistration(value){
     return new Promise<any> ( (resolve, reject)=>{

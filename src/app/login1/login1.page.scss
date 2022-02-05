@@ -1,5 +1,5 @@
 ion-content{
-    --ion-background-color:#E1EAF9 !important;
+    // --ion-background-color:#bec7bf !important;
   }
   
   ion-toolbar{
@@ -8,11 +8,20 @@ ion-content{
   }
   
   ion-card{
-    background-color: transparent !important;
-    padding: 0 !important;
+    background-color: rgba($color: rgb(207, 202, 202), $alpha: 0.45) !important;
+     padding: 0 !important; 
+     transform: translateY(25vh); 
   }
   
-  
+  .background-container {  
+    height: 100%; 
+    width: 100%; 
+    opacity: 80%;
+    background: url('../../assets/oliveImg/olive5.jpg'); 
+    background-repeat: no-repeat; 
+    background-position: center; 
+    background-size: cover;
+} 
   
   ion-card-title{
     margin-top: 30px;
@@ -35,14 +44,15 @@ ion-content{
   }
   
   ion-card{
-    --ion-background-color:transparent;
-  box-shadow: none !important;
+  //    --ion-background-color:transparent;
+  //  box-shadow: none !important; 
+  // transform: translateX(25vh ,25vh);
   }
   
   .signin-btns{
     margin-top: 35px;
     text-align: center;
-    color:#F0F4FA;
+    color:#4b4e52;
   }
   
   .loginbtn{
@@ -55,7 +65,7 @@ ion-content{
     span{
       font-size: 13px;
       font-weight: normal;
-      color:#898585;
+      color:#080808;
     }
   }
   

@@ -1,0 +1,65 @@
+<ion-header [translucent]="true" class="ion-no-border">
+  <ion-toolbar>
+
+    <ion-buttons slot="start">
+      
+      <ion-button>
+        <ion-icon color="light" name="person-circle-outline"></ion-icon>
+        <p style="color: aliceblue; font-size: small;">Salut</p>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-buttons slot="end">
+      <ion-icon style="padding-right: 3px;" color="light" name="cloudy-night"></ion-icon>
+      <ion-toggle slot="end"
+      
+      
+                  [ngModel]="darkMode"
+                  (ionChange)="cambio()"></ion-toggle>
+    </ion-buttons>
+    
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content fullscreen>
+  <ion-card *ngFor="let image of images"> 
+    
+    <ion-card-header>
+      <ion-card-subtitle>{{ image.name }}</ion-card-subtitle>
+    </ion-card-header> 
+    <ion-img [src]="image.url"></ion-img>
+  </ion-card>
+</ion-content>
+<ion-footer style="padding-top: 10%;     --background: rgba(255,255,255,0.8);">
+   
+      <div class="popup-menu">
+        <div class="popup-menu-toggle" [ngClass]="{'out': openMenu}" (click)="togglePopupMenu()">
+          <ion-icon color="dark" name="grid-outline"></ion-icon>
+        </div>
+        <div class="popup-menu-overlay" [ngClass]="{'in': openMenu}" (click)="togglePopupMenu()"></div>
+    
+        <div class="popup-menu-panel" [ngClass]="{'in': openMenu}">
+          <ion-grid class="ion-no-padding">
+            <ion-row align-items-center>
+              
+              <ion-col size="6" class="ion-no-padding">
+                <ion-tab-button [routerLink]="['/map']">
+                  <ion-icon  style="  color: #364F6B;" name="map-outline"></ion-icon>
+                  <ion-label style="  color: #364F6B;">Map</ion-label>
+                </ion-tab-button>
+              </ion-col>
+              
+              <ion-col size="6" class="ion-no-padding">
+                <ion-tab-button [routerLink]="['/profile']">
+                  <ion-icon style="  color: #364F6B;" name="person"></ion-icon>
+                  <ion-label style="  color: #364F6B;">Profile</ion-label>
+                </ion-tab-button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
+      </div>
+
+
+</ion-footer>

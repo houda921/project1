@@ -1,8 +1,7 @@
 import { Component, OnInit,EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../shared/authentication.service';
-import { ParticipantService } from '../shared/Participant.service';
-import { Participant } from '../models/participant';  
+ 
 import {Camera ,CameraOptions} from "@ionic-native/camera/ngx" 
 import { LoadingController, NavController } from '@ionic/angular'; 
 import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/firestore'; 
@@ -10,7 +9,7 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireAuth } from '@angular/fire/auth';  
 //import { PowerManagement } from '@ionic-native/power-management';
 import { AngularFireModule } from '@angular/fire';  
-import { Options } from 'selenium-webdriver';
+//import { Options } from 'selenium-webdriver';
 import { toBase64String } from '@angular/compiler/src/output/source_map'; 
 //import{ FormGroup ,FormControl} from '@angular/forms' ;
 //import firebaseConfig from './firebase' 
@@ -25,7 +24,7 @@ firebase.initializeApp(config)
   styleUrls: ['./registration.page.scss'],
 })
 export class RegistrationPage implements OnInit {
-part :Participant  
+
 afDatabase :any
 afAuth:AngularFireAuth 
 navCtrl:NavController  
